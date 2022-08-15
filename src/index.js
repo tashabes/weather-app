@@ -37,7 +37,8 @@ function searchCity(city) {
 
 function showTemperature(response) {
   let temp = document.querySelector("#ctof");
-  temp.innerHTML = Math.round(response.data.main.temp);
+  celsiusTemperature = response.data.main.temp;
+  temp.innerHTML = Math.round(celsiusTemperature);
   let description = document.querySelector("#weather-description");
   description.innerHTML = response.data.weather[0].description;
   let humidity = document.querySelector("#humidity");
@@ -55,7 +56,7 @@ function showTemperature(response) {
   );
   icon.setAttribute("alt", response.data.weather[0].description);
 }
-//Geolocation
+
 function buttonClick(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(retrievePosition);
@@ -69,8 +70,33 @@ function retrievePosition(position) {
   axios.get(url).then(showTemperature);
 }
 
+function showFahrenheitTemperature(event) {
+  event.preventDefault();
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  let temp = document.querySelector("#ctof");
+  celsiuslink.classList.remove("active");
+  farenheitlink.classList.add("active");
+  temp.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function showCelsiusTemperature(event) {
+  event.preventDefault();
+  celsiuslink.classList.add("active");
+  farenheitlink.classList.remove("active");
+  let temp = document.querySelector("#ctof");
+  temp.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
+
 let cityEntry = document.querySelector("#city-entry");
 cityEntry.addEventListener("submit", updateCity);
 
 let button = document.querySelector("button");
 button.addEventListener("click", buttonClick);
+
+let farenheitlink = document.querySelector("#fahrenheit-link");
+farenheitlink.addEventListener("click", showFahrenheitTemperature);
+
+let celsiuslink = document.querySelector("#celsius-link");
+celsiuslink.addEventListener("click", showCelsiusTemperature);

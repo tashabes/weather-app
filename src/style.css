@@ -63,10 +63,7 @@ button {
   color: #1ab2a8;
 }
 
-#celcius,
-#fahrenheit {
-  text-decoration: none;
-  color: white;
+.c-f {
   font-size: 20px;
 }
 
@@ -76,4 +73,13 @@ ul {
 
 li::first-letter {
   text-transform: capitalize;
+}
+
+.active {
+  color: white;
+  cursor: default;
+}
+
+.active:hover {
+  text-decoration: none;
 }
