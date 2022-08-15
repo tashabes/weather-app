@@ -90,3 +90,8 @@ li::first-letter {
 .weather-forecast-temp-min {
   opacity: 0.6;
 }
+
+.weather-forecast {
+  display: block;
+  margin: 0 auto;
+}

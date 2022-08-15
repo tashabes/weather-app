@@ -35,6 +35,33 @@ function searchCity(city) {
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+          <div class="col-2">
+          <div class="card" style="width: 7rem;">
+  <img class="card-img-top" src="http://openweathermap.org/img/wn/50d@2x.png" alt="Card image cap">
+  <div class="card-body">
+    <div class = "weather-forecast-date">${day}</div>
+    <div class="weather-forecast-temp">
+    <span class="weather-forecast-temp-max">29°C</span><span class="weather-forecast-temp-min"> 17°C</span></div>
+   
+  </div>
+</div>
+</div>
+          
+          `;
+  });
+  forecastHTML = forecastHTML + `<div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showTemperature(response) {
   let temp = document.querySelector("#ctof");
   celsiusTemperature = response.data.main.temp;
@@ -100,3 +127,5 @@ farenheitlink.addEventListener("click", showFahrenheitTemperature);
 
 let celsiuslink = document.querySelector("#celsius-link");
 celsiuslink.addEventListener("click", showCelsiusTemperature);
+
+displayForecast();
