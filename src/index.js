@@ -1,8 +1,3 @@
-//Allow person to enter the city
-//Update the city to show the city entered
-//Find the temperature, general weather, humidity & wind for that city
-//Update the app to show the weather for that city
-
 function updateCity(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#enter-city");
@@ -56,6 +51,12 @@ function showTemperature(response) {
   name.innerHTML = response.data.name;
   let dateElement = document.querySelector("#day");
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  let icon = document.querySelector("#main-weather-icon");
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  icon.setAttribute("alt", response.data.weather[0].description);
 }
 //Geolocation
 function buttonClick(event) {
