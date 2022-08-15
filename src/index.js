@@ -2,9 +2,6 @@ function updateCity(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#enter-city");
   cityInput = cityInput.value;
-
-  let newCity = document.querySelector("#current-city");
-  newCity.innerHTML = cityInput;
   searchCity(cityInput);
 }
 

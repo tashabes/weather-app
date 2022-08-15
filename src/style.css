@@ -16,6 +16,10 @@
   border: 1px solid #1ab2a8;
   border-radius: 4px;
 }
+form {
+  display: block;
+  text-align: center;
+}
 .emoji {
   font-size: 50px;
   text-align: center;
