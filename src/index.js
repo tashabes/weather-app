@@ -60,7 +60,7 @@ function showTemperature(response) {
   let humidity = document.querySelector("#humidity");
   humidity.innerHTML = response.data.main.humidity;
   let wind = document.querySelector("#wind");
-  wind.innerHTML = response.data.wind.speed;
+  wind.innerHTML = Math.round(response.data.wind.speed);
   let name = document.querySelector("#current-city");
   name.innerHTML = response.data.name;
 }
