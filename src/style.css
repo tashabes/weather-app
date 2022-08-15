@@ -50,8 +50,11 @@ h2 {
   margin: 0 auto;
   padding: 0px;
 }
-.temp {
-  font-size: 10px;
+.card-text {
+  padding: 10px;
+}
+.weather-forecast-temp {
+  font-size: 12px;
 }
 
 button {
@@ -82,4 +85,8 @@ li::first-letter {
 
 .active:hover {
   text-decoration: none;
+}
+
+.weather-forecast-temp-min {
+  opacity: 0.6;
 }
