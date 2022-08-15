@@ -1,35 +1,3 @@
-//Update the day and time last updated on the site
-let now = new Date();
-let day = now.getDay();
-
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-day = days[day];
-
-let hours = now.getHours();
-if (hours < 10) {
-  hours = `0${hours}`;
-}
-let minutes = now.getMinutes();
-if (minutes < 10) {
-  minutes = `0${minutes}`;
-}
-
-let dayUpdate = document.querySelector("#day");
-dayUpdate.innerHTML = day;
-
-let hourUpdate = document.querySelector("#hour");
-hourUpdate.innerHTML = hours;
-let minuteUpdate = document.querySelector("#mins");
-minuteUpdate.innerHTML = minutes;
-
 //Allow person to enter the city
 //Update the city to show the city entered
 //Find the temperature, general weather, humidity & wind for that city
@@ -86,7 +54,7 @@ function showTemperature(response) {
   wind.innerHTML = Math.round(response.data.wind.speed);
   let name = document.querySelector("#current-city");
   name.innerHTML = response.data.name;
-  let dateElement = document.querySelector("#local-time");
+  let dateElement = document.querySelector("#day");
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 //Geolocation
