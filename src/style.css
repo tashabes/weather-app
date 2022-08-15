@@ -69,3 +69,7 @@ button {
 ul {
   list-style: none;
 }
+
+#weather-description {
+  text-transform: capitalize;
+}
