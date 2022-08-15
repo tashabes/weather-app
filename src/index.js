@@ -106,6 +106,16 @@ function showTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   icon.setAttribute("alt", response.data.weather[0].description);
+  debugger;
+  if (celsiusTemperature > -10 && celsiusTemperature <= 0) {
+    document.getElementById("container").style.background = "#96CAE0";
+  } else if (celsiusTemperature > 1 && celsiusTemperature <= 15) {
+    document.getElementById("container").style.background = "#90E0C5";
+  } else if (celsiusTemperature > 16 && celsiusTemperature <= 25) {
+    document.getElementById("container").style.background = "#E0CE8C";
+  } else if (celsiusTemperature > 26) {
+    document.getElementById("container").style.background = "#E08570";
+  }
 
   getForecast(response.data.coord);
 }
@@ -130,3 +140,5 @@ cityEntry.addEventListener("submit", updateCity);
 
 let button = document.querySelector("button");
 button.addEventListener("click", buttonClick);
+
+let container = document.querySelector("#container");
