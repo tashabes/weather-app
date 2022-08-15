@@ -45,6 +45,29 @@ function updateCity(event) {
   searchCity(cityInput);
 }
 
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
+}
+
 function searchCity(city) {
   let apiKey = "2b17fbae1b8b000780a0accf16f61402";
   let units = "metric";
@@ -63,6 +86,8 @@ function showTemperature(response) {
   wind.innerHTML = Math.round(response.data.wind.speed);
   let name = document.querySelector("#current-city");
   name.innerHTML = response.data.name;
+  let dateElement = document.querySelector("#local-time");
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 //Geolocation
 function buttonClick(event) {

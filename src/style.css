@@ -70,6 +70,6 @@ ul {
   list-style: none;
 }
 
-#weather-description {
+li::first-letter {
   text-transform: capitalize;
 }
